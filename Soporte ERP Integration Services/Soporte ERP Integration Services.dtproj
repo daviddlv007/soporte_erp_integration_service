@@ -26,11 +26,13 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">PCDAVID</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAu9MUwIZdhkq7fsD0dZrECQAAAAACAAAAAAAQZgAAAAEAACAAAAA1mVUwPC/joxDPXVrl0JWsMFJmDEjCQ/z4KTVvWnurnQAAAAAOgAAAAAIAACAAAAAkN5mFdRDrdnvdplRdtyO9kPyyvIyUVh1vBHj3JEfGVJAAAAC72A+Hr84b+NPVVwp6tU5Bjng/o5FJWF63h6I/Gl700NhF+w5Dgz+SwMuleVb0t+N9a3klHa4g00ITSxWfZu9Ynm1icfyuoOSxLmLl/f8UtsO8+HWxqAEW0PBhMcvYcE7npJ0ma1+OvNFBknPkqE4ESceooxq+ldgNnYGFkENSPLoB1x2NWHrxjyWfpSIVYjtAAAAARkWLTMORtsHPuDxNdkgfD2qlBkRr1eT9CLl5mWqiRagrRnhlR/g/0dZPNhZXP//aEtaPrVSFHfhoXLlEEsgf+w==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAu9MUwIZdhkq7fsD0dZrECQAAAAACAAAAAAAQZgAAAAEAACAAAAAkHPb798mb9bwef8wXxpMBH69XzKSLAMmdHQH97SoeawAAAAAOgAAAAAIAACAAAACYQmhFcej2TOo3q/c/sewFyNvX0htFtBNtZJvAelfU35AAAAAqPyw9SUH4SXzHyEDKZvnDjqQF+9V//TFL+rkPCROKr4sNzNknfCrPFcuRFH7WhWccL2ujCd/5URTvUy62nnZmEXSfcwYSb74XSwQzx5T4f32nLQSP8YWvZ9Lt7vICK6JleYr9Wdcot1X/ZUTx23ZSma5NF3ZFFWXNHLrR1j4CVDVFk2DzjD01fTApSfZzBw9AAAAAHv6oEotRG6wohfeL48tSJDIxSFn78JA8Xpzvi6JHsRBg+UGEnjn8DipfgQb3X4X51lOsWoMQyxyE/sLmGpUqDw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
-          <SSIS:Package SSIS:Name="Package.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="VagPackage.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="DavPackage.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="MainPackage.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="PCDavid_SQLEXPRESS.erp_soporte.conmgr" />
@@ -276,7 +278,41 @@
             </SSIS:Parameter>
           </SSIS:ProjectConnectionParameters>
           <SSIS:PackageInfo>
-            <SSIS:PackageMetaData SSIS:Name="Package.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="VagPackage.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{F4D659CE-A1F8-489D-AD76-EE15BF198F2D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">VagPackage</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{19C39392-DBEB-4698-B2E3-AA7119D2B0F4}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="DavPackage.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{96BD6EB2-BF11-401B-9B55-999E96F1EC23}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{5D0A410B-5880-4DB8-A93C-B345C31CE8D3}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="MainPackage.dtsx">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">{70ADC069-CE85-46A7-B785-4A6A81BD71C1}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">Package</SSIS:Property>

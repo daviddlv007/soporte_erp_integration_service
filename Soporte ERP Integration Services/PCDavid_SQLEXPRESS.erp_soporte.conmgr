@@ -6,6 +6,6 @@
   <DTS:ObjectData>
     <DTS:ConnectionManager
       DTS:Retain="True"
-      DTS:ConnectionString="Data Source=localhost\SQLEXPRESS;Initial Catalog=erp_soporte;Integrated Security=True;TrustServerCertificate=True;" />
+      DTS:ConnectionString="Data Source=localhost\SQLEXPRESS;Initial Catalog=erp_soporte;Integrated Security=True;TrustServerCertificate=True;MultipleActiveResultSets=True;" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>

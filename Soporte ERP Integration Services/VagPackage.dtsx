@@ -11,17 +11,901 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="VagPackage"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{D3C73E70-6813-4A38-AF20-A7DE0B8B7427}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{DC9B6639-D07A-4010-B523-997D6E18537C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
+      DTS:refId="Package\DFT_Cargar_Dim_Almacen"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{f20516d6-7aa5-4375-baa6-30ddc6d753ec}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Cargar_Dim_Almacen"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Cargar_Dim_Almacen\ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="ADO NET Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."dim_almacen"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Cargar_Dim_Almacen\ADO NET Destination.Connections[IDbConnection]"
+                  connectionManagerID="{610FED14-9C9F-462D-8EF1-67898BD82483}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PCDavid_SQLEXPRESS.erp_soporte_destino]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Cargar_Dim_Almacen\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Dim_Almacen\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[almacen_id]"
+                      cachedDataType="i4"
+                      cachedName="almacen_id"
+                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Almacen\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[almacen_id]"
+                      lineageId="Package\DFT_Cargar_Dim_Almacen\ADO NET Source.Outputs[ADO NET Source Output].Columns[almacen_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Dim_Almacen\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="nombre"
+                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Almacen\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[nombre]"
+                      lineageId="Package\DFT_Cargar_Dim_Almacen\ADO NET Source.Outputs[ADO NET Source Output].Columns[nombre]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Almacen\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[almacen_id]"
+                      dataType="i4"
+                      name="almacen_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Almacen\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[nombre]"
+                      dataType="wstr"
+                      length="100"
+                      name="nombre" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Cargar_Dim_Almacen\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\DFT_Cargar_Dim_Almacen\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Almacen\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Dim_Almacen\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Almacen\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Dim_Almacen\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Cargar_Dim_Almacen\ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="ADO NET Source"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+    a.codigo      AS almacen_id,
+    a.nombre      AS nombre
+FROM erp_soporte.almacen a
+LEFT OUTER JOIN erp_soporte_destino.dbo.dim_almacen d
+    ON d.almacen_id = a.codigo
+WHERE
+    a.codigo IS NOT NULL
+    AND a.nombre IS NOT NULL
+    AND d.almacen_id IS NULL;</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Cargar_Dim_Almacen\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="{440007E0-03D7-45EE-99B0-BFC6A2EB3CB4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PCDavid_SQLEXPRESS.erp_soporte]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Cargar_Dim_Almacen\ADO NET Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Almacen\ADO NET Source.Outputs[ADO NET Source Output].Columns[almacen_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Almacen\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[almacen_id]"
+                      lineageId="Package\DFT_Cargar_Dim_Almacen\ADO NET Source.Outputs[ADO NET Source Output].Columns[almacen_id]"
+                      name="almacen_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Almacen\ADO NET Source.Outputs[ADO NET Source Output].Columns[nombre]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Almacen\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[nombre]"
+                      length="50"
+                      lineageId="Package\DFT_Cargar_Dim_Almacen\ADO NET Source.Outputs[ADO NET Source Output].Columns[nombre]"
+                      name="nombre"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Almacen\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[almacen_id]"
+                      dataType="i4"
+                      name="almacen_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Almacen\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[nombre]"
+                      dataType="wstr"
+                      length="50"
+                      name="nombre" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Cargar_Dim_Almacen\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Almacen\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[almacen_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Dim_Almacen\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[almacen_id]"
+                      name="almacen_id" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Almacen\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[nombre]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\DFT_Cargar_Dim_Almacen\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[nombre]"
+                      name="nombre" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Almacen\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Dim_Almacen\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Almacen\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Dim_Almacen\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Cargar_Dim_Almacen.Paths[ADO NET Source Output]"
+              endId="Package\DFT_Cargar_Dim_Almacen\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\DFT_Cargar_Dim_Almacen\ADO NET Source.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Cargar_Dim_Cliente"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{bcbe3489-6f0a-4318-8641-05aa4cff4723}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Cargar_Dim_Cliente"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="ADO NET Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."dim_cliente"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Destination.Connections[IDbConnection]"
+                  connectionManagerID="{610FED14-9C9F-462D-8EF1-67898BD82483}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PCDavid_SQLEXPRESS.erp_soporte_destino]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[cliente_id]"
+                      dataType="i4"
+                      name="cliente_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[nombre]"
+                      dataType="wstr"
+                      length="100"
+                      name="nombre" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[tipo]"
+                      dataType="wstr"
+                      length="50"
+                      name="tipo" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ciudad]"
+                      dataType="wstr"
+                      length="50"
+                      name="ciudad" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\DFT_Cargar_Dim_Cliente\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Dim_Cliente\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Dim_Cliente\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="ADO NET Source"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+    c.codigo     AS cliente_id,
+    c.nombre     AS nombre,
+    tc.nombre    AS tipo,
+    ci.nombre    AS ciudad
+FROM erp_soporte.cliente c
+INNER JOIN erp_soporte.tipo_cliente tc
+    ON c.tipo_cliente = tc.codigo
+LEFT JOIN erp_soporte.ciudad ci
+    ON c.ciudad = ci.codigo
+LEFT OUTER JOIN erp_soporte_destino.dbo.dim_cliente dc
+    ON dc.cliente_id = c.codigo
+WHERE
+    c.codigo IS NOT NULL
+    AND c.nombre IS NOT NULL
+    AND tc.nombre IS NOT NULL
+	AND ci.nombre IS NOT NULL
+    AND dc.cliente_id IS NULL;</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="{440007E0-03D7-45EE-99B0-BFC6A2EB3CB4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PCDavid_SQLEXPRESS.erp_soporte]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Output].Columns[cliente_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[cliente_id]"
+                      lineageId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Output].Columns[cliente_id]"
+                      name="cliente_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Output].Columns[nombre]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[nombre]"
+                      lineageId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Output].Columns[nombre]"
+                      name="nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Output].Columns[tipo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[tipo]"
+                      length="255"
+                      lineageId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Output].Columns[tipo]"
+                      name="tipo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Output].Columns[ciudad]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[ciudad]"
+                      length="40"
+                      lineageId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Output].Columns[ciudad]"
+                      name="ciudad"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[cliente_id]"
+                      dataType="i4"
+                      name="cliente_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[nombre]"
+                      dataType="nText"
+                      name="nombre" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[tipo]"
+                      dataType="wstr"
+                      length="255"
+                      name="tipo" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[ciudad]"
+                      dataType="wstr"
+                      length="40"
+                      name="ciudad" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[cliente_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[cliente_id]"
+                      name="cliente_id" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[nombre]"
+                      dataType="nText"
+                      lineageId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[nombre]"
+                      name="nombre" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[tipo]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[tipo]"
+                      name="tipo" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ciudad]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ciudad]"
+                      name="ciudad" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Cargar_Dim_Cliente.Paths[ADO NET Source Output]"
+              endId="Package\DFT_Cargar_Dim_Cliente\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Cargar_Dim_Fecha"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{184af533-723a-4d5f-be36-d6a9a2857dfc}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Cargar_Dim_Fecha"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="ADO NET Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."dim_fecha"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Destination.Connections[IDbConnection]"
+                  connectionManagerID="{610FED14-9C9F-462D-8EF1-67898BD82483}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PCDavid_SQLEXPRESS.erp_soporte_destino]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[fecha_id]"
+                      cachedDataType="i4"
+                      cachedName="fecha_id"
+                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Fecha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[fecha_id]"
+                      lineageId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output].Columns[fecha_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[dia]"
+                      cachedDataType="i4"
+                      cachedName="dia"
+                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Fecha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[dia]"
+                      lineageId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output].Columns[dia]" />
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[mes]"
+                      cachedDataType="i4"
+                      cachedName="mes"
+                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Fecha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[mes]"
+                      lineageId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output].Columns[mes]" />
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[trimestre]"
+                      cachedDataType="i4"
+                      cachedName="trimestre"
+                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Fecha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[trimestre]"
+                      lineageId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output].Columns[trimestre]" />
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[anio]"
+                      cachedDataType="i4"
+                      cachedName="anio"
+                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Fecha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[anio]"
+                      lineageId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output].Columns[anio]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[fecha_id]"
+                      dataType="i4"
+                      name="fecha_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[dia]"
+                      dataType="i4"
+                      name="dia" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[mes]"
+                      dataType="i4"
+                      name="mes" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[trimestre]"
+                      dataType="i4"
+                      name="trimestre" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[anio]"
+                      dataType="i4"
+                      name="anio" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\DFT_Cargar_Dim_Fecha\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Dim_Fecha\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Dim_Fecha\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="ADO NET Source"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT  
+    CONVERT(INT, CONVERT(CHAR(8), f.fecha, 112)) AS fecha_id,
+    DAY(f.fecha)                                 AS dia,
+    MONTH(f.fecha)                               AS mes,
+    DATEPART(QUARTER, f.fecha)                   AS trimestre,
+    YEAR(f.fecha)                                AS anio
+FROM erp_soporte.detalle_factura df
+INNER JOIN erp_soporte.factura f
+    ON df.factura = f.codigo
+LEFT OUTER JOIN erp_soporte_destino.dbo.dim_fecha d
+    ON d.fecha_id = CONVERT(INT, CONVERT(CHAR(8), f.fecha, 112))
+WHERE 
+    f.fecha IS NOT NULL
+    AND d.fecha_id IS NULL;</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="{440007E0-03D7-45EE-99B0-BFC6A2EB3CB4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PCDavid_SQLEXPRESS.erp_soporte]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output].Columns[fecha_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[fecha_id]"
+                      lineageId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output].Columns[fecha_id]"
+                      name="fecha_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output].Columns[dia]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[dia]"
+                      lineageId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output].Columns[dia]"
+                      name="dia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output].Columns[mes]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[mes]"
+                      lineageId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output].Columns[mes]"
+                      name="mes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output].Columns[trimestre]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[trimestre]"
+                      lineageId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output].Columns[trimestre]"
+                      name="trimestre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output].Columns[anio]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[anio]"
+                      lineageId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output].Columns[anio]"
+                      name="anio"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[fecha_id]"
+                      dataType="i4"
+                      name="fecha_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[dia]"
+                      dataType="i4"
+                      name="dia" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[mes]"
+                      dataType="i4"
+                      name="mes" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[trimestre]"
+                      dataType="i4"
+                      name="trimestre" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[anio]"
+                      dataType="i4"
+                      name="anio" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[fecha_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[fecha_id]"
+                      name="fecha_id" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[dia]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[dia]"
+                      name="dia" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[mes]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[mes]"
+                      name="mes" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[trimestre]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[trimestre]"
+                      name="trimestre" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[anio]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[anio]"
+                      name="anio" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Cargar_Dim_Fecha.Paths[ADO NET Source Output]"
+              endId="Package\DFT_Cargar_Dim_Fecha\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\DFT_Cargar_Dim_Fecha\ADO NET Source.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\DFT_Cargar_Dim_Producto"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{ff48476e-1a62-4727-ab2b-e186107d7b64}"
+      DTS:DTSID="{33b58425-1fa2-4edd-b70b-b8ec82f68cd6}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="DFT_Cargar_Dim_Producto"
@@ -380,7 +1264,7 @@ WHERE
       DTS:refId="Package\DFT_Cargar_Dim_Unidad_Negocio"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{30cdbe16-43e9-47cd-9470-eec1b3ff5b26}"
+      DTS:DTSID="{efcade22-a1fa-4736-b278-af08ea9762fb}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="DFT_Cargar_Dim_Unidad_Negocio"
@@ -666,7 +1550,1362 @@ WHERE
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Cargar_Dim_Vendedor"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{28bb0151-df24-414f-935a-42f3f9d1feaa}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Cargar_Dim_Vendedor"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="ADO NET Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."dim_vendedor"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Destination.Connections[IDbConnection]"
+                  connectionManagerID="{610FED14-9C9F-462D-8EF1-67898BD82483}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PCDavid_SQLEXPRESS.erp_soporte_destino]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[vendedor_id]"
+                      cachedDataType="i4"
+                      cachedName="vendedor_id"
+                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[vendedor_id]"
+                      lineageId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Output].Columns[vendedor_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="nombre"
+                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[nombre]"
+                      lineageId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Output].Columns[nombre]" />
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[cargo]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="cargo"
+                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[cargo]"
+                      lineageId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Output].Columns[cargo]" />
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[tipo]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="tipo"
+                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[tipo]"
+                      lineageId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Output].Columns[tipo]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[vendedor_id]"
+                      dataType="i4"
+                      name="vendedor_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[nombre]"
+                      dataType="wstr"
+                      length="100"
+                      name="nombre" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[tipo]"
+                      dataType="wstr"
+                      length="50"
+                      name="tipo" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[cargo]"
+                      dataType="wstr"
+                      length="50"
+                      name="cargo" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="ADO NET Source"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+    ev.codigo        AS vendedor_id,
+    ev.nombre        AS nombre,
+    c.nombre         AS cargo,
+    tv.nombre        AS tipo
+FROM erp_soporte.ejecutivo_de_venta ev
+INNER JOIN erp_soporte.cargo c
+    ON c.codigo = ev.cargo
+INNER JOIN erp_soporte.tipo_vendedor tv
+    ON ev.tipo_ejecutivo_venta = tv.codigo
+LEFT OUTER JOIN erp_soporte_destino.dbo.dim_vendedor dv
+    ON dv.vendedor_id = ev.codigo
+WHERE
+    ev.codigo IS NOT NULL
+    AND ev.nombre IS NOT NULL
+    AND c.nombre IS NOT NULL
+    AND tv.nombre IS NOT NULL
+    AND dv.vendedor_id IS NULL;</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="{440007E0-03D7-45EE-99B0-BFC6A2EB3CB4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PCDavid_SQLEXPRESS.erp_soporte]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Output].Columns[vendedor_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[vendedor_id]"
+                      lineageId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Output].Columns[vendedor_id]"
+                      name="vendedor_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Output].Columns[nombre]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[nombre]"
+                      length="80"
+                      lineageId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Output].Columns[nombre]"
+                      name="nombre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Output].Columns[cargo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[cargo]"
+                      length="60"
+                      lineageId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Output].Columns[cargo]"
+                      name="cargo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Output].Columns[tipo]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[tipo]"
+                      length="20"
+                      lineageId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Output].Columns[tipo]"
+                      name="tipo"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[vendedor_id]"
+                      dataType="i4"
+                      name="vendedor_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[nombre]"
+                      dataType="wstr"
+                      length="80"
+                      name="nombre" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[cargo]"
+                      dataType="wstr"
+                      length="60"
+                      name="cargo" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[tipo]"
+                      dataType="wstr"
+                      length="20"
+                      name="tipo" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[vendedor_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[vendedor_id]"
+                      name="vendedor_id" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[nombre]"
+                      dataType="wstr"
+                      length="80"
+                      lineageId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[nombre]"
+                      name="nombre" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[cargo]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[cargo]"
+                      name="cargo" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[tipo]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[tipo]"
+                      name="tipo" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Cargar_Dim_Vendedor.Paths[ADO NET Source Output]"
+              endId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{dffbd961-ed87-4a11-beb8-7444a5a085ff}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Cargar_Fact_Cuenta_Por_Cobrar"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="ADO NET Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."fact_cuenta_por_cobrar"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Connections[IDbConnection]"
+                  connectionManagerID="{610FED14-9C9F-462D-8EF1-67898BD82483}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PCDavid_SQLEXPRESS.erp_soporte_destino]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[fecha_emision_id]"
+                      cachedDataType="i4"
+                      cachedName="fecha_emision_id"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[fecha_emision_id]"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].Columns[fecha_emision_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[cliente_id]"
+                      cachedDataType="i4"
+                      cachedName="cliente_id"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[cliente_id]"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].Columns[cliente_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[unidad_negocio_id]"
+                      cachedDataType="i4"
+                      cachedName="unidad_negocio_id"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[unidad_negocio_id]"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].Columns[unidad_negocio_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[vendedor_id]"
+                      cachedDataType="i4"
+                      cachedName="vendedor_id"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[vendedor_id]"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].Columns[vendedor_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[fecha_vencimiento]"
+                      cachedDataType="dbDate"
+                      cachedName="fecha_vencimiento"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[fecha_vencimiento]"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].Columns[fecha_vencimiento]" />
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[fecha_abono]"
+                      cachedDataType="dbDate"
+                      cachedName="fecha_abono"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[fecha_abono]"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].Columns[fecha_abono]" />
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[monto_facturado]"
+                      cachedDataType="r8"
+                      cachedName="monto_facturado"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[monto_facturado]"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].Columns[monto_facturado]" />
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[monto_abonado]"
+                      cachedDataType="r8"
+                      cachedName="monto_abonado"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[monto_abonado]"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].Columns[monto_abonado]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[fecha_emision_id]"
+                      dataType="i4"
+                      name="fecha_emision_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[cliente_id]"
+                      dataType="i4"
+                      name="cliente_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[unidad_negocio_id]"
+                      dataType="i4"
+                      name="unidad_negocio_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[vendedor_id]"
+                      dataType="i4"
+                      name="vendedor_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[fecha_vencimiento]"
+                      dataType="dbTimeStamp"
+                      name="fecha_vencimiento" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[fecha_abono]"
+                      dataType="dbTimeStamp"
+                      name="fecha_abono" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[monto_facturado]"
+                      dataType="r8"
+                      name="monto_facturado" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[monto_abonado]"
+                      dataType="r8"
+                      name="monto_abonado" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="ADO NET Source"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+    CONVERT(INT, CONVERT(CHAR(8), f.fecha, 112))     AS fecha_emision_id,
+    f.cliente                                        AS cliente_id,
+    f.unidad_de_negocio                              AS unidad_negocio_id,
+    f.vendedor                                       AS vendedor_id,
+    f.fecha_vencimiento                              AS fecha_vencimiento,
+    ri.fecha                                         AS fecha_abono,
+    dri.monto_factura                                AS monto_facturado,
+    dri.monto_pagado                                 AS monto_abonado
+FROM erp_soporte.detalle_recibo_ingreso AS dri
+INNER JOIN erp_soporte.factura AS f
+    ON dri.factura = f.codigo
+INNER JOIN erp_soporte.recibo_ingreso AS ri
+    ON dri.recibo = ri.codigo
+LEFT OUTER JOIN erp_soporte_destino.dbo.fact_cuenta_por_cobrar AS fcpc
+    ON fcpc.fecha_emision_id     = CONVERT(INT, CONVERT(CHAR(8), f.fecha, 112))
+   AND fcpc.cliente_id           = f.cliente
+   AND fcpc.unidad_negocio_id    = f.unidad_de_negocio
+   AND fcpc.vendedor_id          = f.vendedor
+   AND fcpc.fecha_vencimiento = f.fecha_vencimiento
+   AND fcpc.fecha_abono       = ri.fecha
+   AND fcpc.monto_facturado      = dri.monto_factura
+   AND fcpc.monto_abonado        = dri.monto_pagado
+WHERE
+    f.condicion_pago = 2
+    AND f.fecha IS NOT NULL
+    AND f.fecha_vencimiento IS NOT NULL
+    AND f.cliente IS NOT NULL
+    AND f.unidad_de_negocio IS NOT NULL
+    AND f.vendedor IS NOT NULL
+    AND dri.monto_factura IS NOT NULL
+    AND dri.monto_pagado IS NOT NULL
+    AND ri.fecha IS NOT NULL
+    AND fcpc.fecha_emision_id IS NULL;</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="{440007E0-03D7-45EE-99B0-BFC6A2EB3CB4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PCDavid_SQLEXPRESS.erp_soporte]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].Columns[fecha_emision_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[fecha_emision_id]"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].Columns[fecha_emision_id]"
+                      name="fecha_emision_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].Columns[cliente_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[cliente_id]"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].Columns[cliente_id]"
+                      name="cliente_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].Columns[unidad_negocio_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[unidad_negocio_id]"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].Columns[unidad_negocio_id]"
+                      name="unidad_negocio_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].Columns[vendedor_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[vendedor_id]"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].Columns[vendedor_id]"
+                      name="vendedor_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].Columns[fecha_vencimiento]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[fecha_vencimiento]"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].Columns[fecha_vencimiento]"
+                      name="fecha_vencimiento"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].Columns[fecha_abono]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[fecha_abono]"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].Columns[fecha_abono]"
+                      name="fecha_abono"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].Columns[monto_facturado]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[monto_facturado]"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].Columns[monto_facturado]"
+                      name="monto_facturado"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].Columns[monto_abonado]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[monto_abonado]"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].Columns[monto_abonado]"
+                      name="monto_abonado"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[fecha_emision_id]"
+                      dataType="i4"
+                      name="fecha_emision_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[cliente_id]"
+                      dataType="i4"
+                      name="cliente_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[unidad_negocio_id]"
+                      dataType="i4"
+                      name="unidad_negocio_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[vendedor_id]"
+                      dataType="i4"
+                      name="vendedor_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[fecha_vencimiento]"
+                      dataType="dbDate"
+                      name="fecha_vencimiento" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[fecha_abono]"
+                      dataType="dbDate"
+                      name="fecha_abono" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[monto_facturado]"
+                      dataType="r8"
+                      name="monto_facturado" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[monto_abonado]"
+                      dataType="r8"
+                      name="monto_abonado" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[fecha_emision_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[fecha_emision_id]"
+                      name="fecha_emision_id" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[cliente_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[cliente_id]"
+                      name="cliente_id" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[unidad_negocio_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[unidad_negocio_id]"
+                      name="unidad_negocio_id" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[vendedor_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[vendedor_id]"
+                      name="vendedor_id" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[fecha_vencimiento]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[fecha_vencimiento]"
+                      name="fecha_vencimiento" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[fecha_abono]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[fecha_abono]"
+                      name="fecha_abono" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[monto_facturado]"
+                      dataType="r8"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[monto_facturado]"
+                      name="monto_facturado" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[monto_abonado]"
+                      dataType="r8"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[monto_abonado]"
+                      name="monto_abonado" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar.Paths[ADO NET Source Output]"
+              endId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT_Cargar_Fact_Venta"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{673e91ba-5541-44bf-b398-e69cecaf74fa}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT_Cargar_Fact_Venta"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="ADO NET Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"dbo"."fact_venta"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Connections[IDbConnection]"
+                  connectionManagerID="{610FED14-9C9F-462D-8EF1-67898BD82483}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PCDavid_SQLEXPRESS.erp_soporte_destino]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[fecha_id]"
+                      cachedDataType="i4"
+                      cachedName="fecha_id"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[fecha_id]"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[fecha_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[producto_id]"
+                      cachedDataType="i4"
+                      cachedName="producto_id"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[producto_id]"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[producto_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[cliente_id]"
+                      cachedDataType="i4"
+                      cachedName="cliente_id"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[cliente_id]"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[cliente_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[almacen_id]"
+                      cachedDataType="i4"
+                      cachedName="almacen_id"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[almacen_id]"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[almacen_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[vendedor_id]"
+                      cachedDataType="i4"
+                      cachedName="vendedor_id"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[vendedor_id]"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[vendedor_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[unidad_negocio_id]"
+                      cachedDataType="i4"
+                      cachedName="unidad_negocio_id"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[unidad_negocio_id]"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[unidad_negocio_id]" />
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[precio_unitario]"
+                      cachedDataType="r8"
+                      cachedName="precio_unitario"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[precio_unitario]"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[precio_unitario]" />
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[cantidad]"
+                      cachedDataType="r8"
+                      cachedName="cantidad"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[cantidad]"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[cantidad]" />
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[impuesto]"
+                      cachedDataType="r8"
+                      cachedName="impuesto"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[impuesto]"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[impuesto]" />
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[costo_unitario]"
+                      cachedDataType="r8"
+                      cachedName="costo_unitario"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[costo_unitario]"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[costo_unitario]" />
+                    <inputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[total]"
+                      cachedDataType="r8"
+                      cachedName="total"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[total]"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[total]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[cliente_id]"
+                      dataType="i4"
+                      name="cliente_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[producto_id]"
+                      dataType="i4"
+                      name="producto_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[fecha_id]"
+                      dataType="i4"
+                      name="fecha_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[unidad_negocio_id]"
+                      dataType="i4"
+                      name="unidad_negocio_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[almacen_id]"
+                      dataType="i4"
+                      name="almacen_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[vendedor_id]"
+                      dataType="i4"
+                      name="vendedor_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[precio_unitario]"
+                      dataType="r8"
+                      name="precio_unitario" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[costo_unitario]"
+                      dataType="r8"
+                      name="costo_unitario" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[cantidad]"
+                      dataType="r8"
+                      name="cantidad" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[impuesto]"
+                      dataType="r8"
+                      name="impuesto" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[total]"
+                      dataType="r8"
+                      name="total" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="ADO NET Source"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT
+    CONVERT(INT, CONVERT(CHAR(8), f.fecha, 112))              AS fecha_id,
+    df.articulo                                               AS producto_id,
+    f.cliente                                                 AS cliente_id,
+    df.almacen                                                 AS almacen_id,
+    f.vendedor                                                AS vendedor_id,
+    f.unidad_de_negocio                                       AS unidad_negocio_id,
+    df.precio                                                  AS precio_unitario,
+    df.cantidad                                                AS cantidad,
+    df.itbis                                                   AS impuesto,
+    df.costo_unitario                                          AS costo_unitario,
+    df.total                                                   AS total
+FROM erp_soporte.detalle_factura AS df
+INNER JOIN erp_soporte.factura AS f
+    ON df.factura = f.codigo
+LEFT OUTER JOIN erp_soporte_destino.dbo.fact_venta AS fv
+    ON fv.fecha_id            = CONVERT(INT, CONVERT(CHAR(8), f.fecha, 112))
+   AND fv.producto_id         = df.articulo
+   AND fv.cliente_id          = f.cliente
+   AND fv.almacen_id          = df.almacen
+   AND fv.vendedor_id         = f.vendedor
+   AND fv.unidad_negocio_id   = f.unidad_de_negocio
+   AND fv.precio_unitario     = df.precio
+   AND fv.cantidad            = df.cantidad
+   AND fv.impuesto            = df.itbis
+   AND fv.costo_unitario      = df.costo_unitario
+   AND fv.total               = df.total
+WHERE
+    f.fecha IS NOT NULL
+    AND df.articulo       IS NOT NULL
+    AND f.cliente         IS NOT NULL
+    AND df.almacen        IS NOT NULL
+    AND f.vendedor        IS NOT NULL
+    AND f.unidad_de_negocio IS NOT NULL
+    AND df.precio         IS NOT NULL
+    AND df.cantidad       IS NOT NULL
+    AND df.itbis          IS NOT NULL
+    AND df.costo_unitario IS NOT NULL
+    AND df.total          IS NOT NULL
+    AND fv.fecha_id IS NULL;</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">2</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="{440007E0-03D7-45EE-99B0-BFC6A2EB3CB4}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[PCDavid_SQLEXPRESS.erp_soporte]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[fecha_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[fecha_id]"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[fecha_id]"
+                      name="fecha_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[producto_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[producto_id]"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[producto_id]"
+                      name="producto_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[cliente_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[cliente_id]"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[cliente_id]"
+                      name="cliente_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[almacen_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[almacen_id]"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[almacen_id]"
+                      name="almacen_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[vendedor_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[vendedor_id]"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[vendedor_id]"
+                      name="vendedor_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[unidad_negocio_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[unidad_negocio_id]"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[unidad_negocio_id]"
+                      name="unidad_negocio_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[precio_unitario]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[precio_unitario]"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[precio_unitario]"
+                      name="precio_unitario"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[cantidad]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[cantidad]"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[cantidad]"
+                      name="cantidad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[impuesto]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[impuesto]"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[impuesto]"
+                      name="impuesto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[costo_unitario]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[costo_unitario]"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[costo_unitario]"
+                      name="costo_unitario"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[total]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[total]"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].Columns[total]"
+                      name="total"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[fecha_id]"
+                      dataType="i4"
+                      name="fecha_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[producto_id]"
+                      dataType="i4"
+                      name="producto_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[cliente_id]"
+                      dataType="i4"
+                      name="cliente_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[almacen_id]"
+                      dataType="i4"
+                      name="almacen_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[vendedor_id]"
+                      dataType="i4"
+                      name="vendedor_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[unidad_negocio_id]"
+                      dataType="i4"
+                      name="unidad_negocio_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[precio_unitario]"
+                      dataType="r8"
+                      name="precio_unitario" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[cantidad]"
+                      dataType="r8"
+                      name="cantidad" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[impuesto]"
+                      dataType="r8"
+                      name="impuesto" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[costo_unitario]"
+                      dataType="r8"
+                      name="costo_unitario" />
+                    <externalMetadataColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[total]"
+                      dataType="r8"
+                      name="total" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[fecha_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[fecha_id]"
+                      name="fecha_id" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[producto_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[producto_id]"
+                      name="producto_id" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[cliente_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[cliente_id]"
+                      name="cliente_id" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[almacen_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[almacen_id]"
+                      name="almacen_id" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[vendedor_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[vendedor_id]"
+                      name="vendedor_id" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[unidad_negocio_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[unidad_negocio_id]"
+                      name="unidad_negocio_id" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[precio_unitario]"
+                      dataType="r8"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[precio_unitario]"
+                      name="precio_unitario" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[cantidad]"
+                      dataType="r8"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[cantidad]"
+                      name="cantidad" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[impuesto]"
+                      dataType="r8"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[impuesto]"
+                      name="impuesto" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[costo_unitario]"
+                      dataType="r8"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[costo_unitario]"
+                      name="costo_unitario" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[total]"
+                      dataType="r8"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[total]"
+                      name="total" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT_Cargar_Fact_Venta.Paths[ADO NET Source Output]"
+              endId="Package\DFT_Cargar_Fact_Venta\ADO NET Destination.Inputs[ADO NET Destination Input]"
+              name="ADO NET Source Output"
+              startId="Package\DFT_Cargar_Fact_Venta\ADO NET Source.Outputs[ADO NET Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{b7f1cebf-73a7-424d-96f0-4111c488791a}"
+      DTS:From="Package\DFT_Cargar_Dim_Fecha"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT_Cargar_Dim_Cliente" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{7b8add94-ca1f-4377-a9f7-82cd630aba02}"
+      DTS:From="Package\DFT_Cargar_Dim_Cliente"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DFT_Cargar_Dim_Producto" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{7712fa61-6dec-4803-b1eb-00892caf6ffa}"
+      DTS:From="Package\DFT_Cargar_Dim_Producto"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\DFT_Cargar_Dim_Almacen" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{ac2a550d-a60f-4aba-b64a-e464aee880ac}"
+      DTS:From="Package\DFT_Cargar_Dim_Almacen"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\DFT_Cargar_Dim_Vendedor" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{90c262d4-0fcd-4f23-b37f-008396a52272}"
+      DTS:From="Package\DFT_Cargar_Dim_Vendedor"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\DFT_Cargar_Dim_Unidad_Negocio" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{f383691d-0507-4ffd-a201-420119e91ebd}"
+      DTS:From="Package\DFT_Cargar_Dim_Unidad_Negocio"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\DFT_Cargar_Fact_Venta" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{13242e65-c743-45f2-bac6-d37dc00e54d7}"
+      DTS:From="Package\DFT_Cargar_Fact_Venta"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
 <!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
@@ -678,18 +2917,359 @@ WHERE
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="215,42"
+          Id="Package\DFT_Cargar_Dim_Almacen"
+          TopLeft="809,259" />
+        <NodeLayout
+          Size="206,42"
+          Id="Package\DFT_Cargar_Dim_Cliente"
+          TopLeft="488.5,86.5" />
+        <NodeLayout
+          Size="202,42"
+          Id="Package\DFT_Cargar_Dim_Fecha"
+          TopLeft="194,86" />
         <NodeLayout
           Size="216,42"
           Id="Package\DFT_Cargar_Dim_Producto"
-          TopLeft="60,60" />
+          TopLeft="812,87" />
         <NodeLayout
           Size="253,42"
           Id="Package\DFT_Cargar_Dim_Unidad_Negocio"
-          TopLeft="60,162" />
+          TopLeft="158,289" />
+        <NodeLayout
+          Size="220,42"
+          Id="Package\DFT_Cargar_Dim_Vendedor"
+          TopLeft="490,277" />
+        <NodeLayout
+          Size="272,42"
+          Id="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar"
+          TopLeft="486,459" />
+        <NodeLayout
+          Size="202,42"
+          Id="Package\DFT_Cargar_Fact_Venta"
+          TopLeft="207,463" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="396,107.25">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="92.5,0"
+              Start="0,0"
+              End="85,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="85,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="694.5,107.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="117.5,0"
+              Start="0,0"
+              End="110,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="110,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="918.25,129">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,130"
+              Start="0,0"
+              End="0,122.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,122.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="809,280">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-99,18"
+              Start="0,0"
+              End="-91.5,18">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-45.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-45.5,0"
+                    Point2="-49.5,0"
+                    Point3="-49.5,4" />
+                  <mssgle:LineSegment
+                    End="-49.5,14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-49.5,14"
+                    Point2="-49.5,18"
+                    Point3="-53.5,18" />
+                  <mssgle:LineSegment
+                    End="-91.5,18" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="490,298">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-79,12"
+              Start="0,0"
+              End="-71.5,12">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-35.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-35.5,0"
+                    Point2="-39.5,0"
+                    Point3="-39.5,4" />
+                  <mssgle:LineSegment
+                    End="-39.5,8" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-39.5,8"
+                    Point2="-39.5,12"
+                    Point3="-43.5,12" />
+                  <mssgle:LineSegment
+                    End="-71.5,12" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="284.5,331">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="23.5,132"
+              Start="0,0"
+              End="23.5,124.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,62"
+                    Point2="0,66"
+                    Point3="4,66" />
+                  <mssgle:LineSegment
+                    End="19.5,66" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19.5,66"
+                    Point2="23.5,66"
+                    Point3="23.5,70" />
+                  <mssgle:LineSegment
+                    End="23.5,124.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="409,482">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="77,0"
+              Start="0,0"
+              End="69.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="69.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="zº"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="40,40"
+          Id="50480c9a-bacc-4fe5-b9b3-4f3c56b1ecea"
+          TopLeft="724.5,403.5" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\DFT_Cargar_Dim_Almacen">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="186,42"
+          Id="Package\DFT_Cargar_Dim_Almacen\ADO NET Destination"
+          TopLeft="405.5,55.5" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\DFT_Cargar_Dim_Almacen\ADO NET Source"
+          TopLeft="137.5,58.5" />
+        <EdgeLayout
+          Id="Package\DFT_Cargar_Dim_Almacen.Paths[ADO NET Source Output]"
+          TopLeft="303.5,78">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="102,0"
+              Start="0,0"
+              End="94.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="94.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\DFT_Cargar_Dim_Cliente">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="186,42"
+          Id="Package\DFT_Cargar_Dim_Cliente\ADO NET Destination"
+          TopLeft="540.5,156.5" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\DFT_Cargar_Dim_Cliente\ADO NET Source"
+          TopLeft="287.5,156.5" />
+        <EdgeLayout
+          Id="Package\DFT_Cargar_Dim_Cliente.Paths[ADO NET Source Output]"
+          TopLeft="453.5,177.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="87,0"
+              Start="0,0"
+              End="79.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="79.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\DFT_Cargar_Dim_Fecha">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="186,42"
+          Id="Package\DFT_Cargar_Dim_Fecha\ADO NET Destination"
+          TopLeft="419.5,102.5" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\DFT_Cargar_Dim_Fecha\ADO NET Source"
+          TopLeft="174.5,101.5" />
+        <EdgeLayout
+          Id="Package\DFT_Cargar_Dim_Fecha.Paths[ADO NET Source Output]"
+          TopLeft="340.5,123">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="79,0"
+              Start="0,0"
+              End="71.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="71.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
   <TaskHost
     design-time-name="Package\DFT_Cargar_Dim_Producto">
     <LayoutInfo>
@@ -757,6 +3337,138 @@ WHERE
                   Capacity="5">
                   <mssgle:LineSegment
                     End="110.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\DFT_Cargar_Dim_Vendedor">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="186,42"
+          Id="Package\DFT_Cargar_Dim_Vendedor\ADO NET Destination"
+          TopLeft="402.5,68.5" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\DFT_Cargar_Dim_Vendedor\ADO NET Source"
+          TopLeft="178.5,70.5" />
+        <EdgeLayout
+          Id="Package\DFT_Cargar_Dim_Vendedor.Paths[ADO NET Source Output]"
+          TopLeft="344.5,90.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="58,0"
+              Start="0,0"
+              End="50.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="50.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="186,42"
+          Id="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination"
+          TopLeft="467.5,176.5" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source"
+          TopLeft="196.5,185.5" />
+        <EdgeLayout
+          Id="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar.Paths[ADO NET Source Output]"
+          TopLeft="362.5,206.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="105,-9"
+              Start="0,0"
+              End="97.5,-9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="48.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="48.5,0"
+                    Point2="52.5,0"
+                    Point3="52.5,-4" />
+                  <mssgle:LineSegment
+                    End="52.5,-5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="52.5,-5"
+                    Point2="52.5,-9"
+                    Point3="56.5,-9" />
+                  <mssgle:LineSegment
+                    End="97.5,-9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\DFT_Cargar_Fact_Venta">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="186,42"
+          Id="Package\DFT_Cargar_Fact_Venta\ADO NET Destination"
+          TopLeft="436.5,76.5" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\DFT_Cargar_Fact_Venta\ADO NET Source"
+          TopLeft="216.5,77.5" />
+        <EdgeLayout
+          Id="Package\DFT_Cargar_Fact_Venta.Paths[ADO NET Source Output]"
+          TopLeft="382.5,98">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="54,0"
+              Start="0,0"
+              End="46.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="46.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

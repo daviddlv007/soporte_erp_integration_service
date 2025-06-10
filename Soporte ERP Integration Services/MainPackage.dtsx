@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="59"
-  DTS:VersionGUID="{A1B3EB67-7CDD-4536-BD8A-07056DF49564}">
+  DTS:VersionBuild="66"
+  DTS:VersionGUID="{6296B3CB-CDF0-4687-B60C-6380745D64E2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -332,34 +332,6 @@ WHERE
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="ADO NET Destination Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[cliente_id]"
-                      cachedDataType="i4"
-                      cachedName="cliente_id"
-                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Cliente\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[cliente_id]"
-                      lineageId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Output].Columns[cliente_id]" />
-                    <inputColumn
-                      refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[nombre]"
-                      cachedDataType="nText"
-                      cachedName="nombre"
-                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Cliente\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[nombre]"
-                      lineageId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Output].Columns[nombre]" />
-                    <inputColumn
-                      refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[tipo]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="tipo"
-                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Cliente\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[tipo]"
-                      lineageId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Output].Columns[tipo]" />
-                    <inputColumn
-                      refId="Package\DFT_Cargar_Dim_Cliente\ADO NET Destination.Inputs[ADO NET Destination Input].Columns[ciudad]"
-                      cachedDataType="wstr"
-                      cachedLength="40"
-                      cachedName="ciudad"
-                      externalMetadataColumnId="Package\DFT_Cargar_Dim_Cliente\ADO NET Destination.Inputs[ADO NET Destination Input].ExternalColumns[ciudad]"
-                      lineageId="Package\DFT_Cargar_Dim_Cliente\ADO NET Source.Outputs[ADO NET Source Output].Columns[ciudad]" />
-                  </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
@@ -2935,12 +2907,12 @@ WHERE
       DTS:To="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
-<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
-<!--If you manually edit this section and make a mistake, you can delete it. -->
-<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
 <Objects
   Version="8">
-  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
   <Package
     design-time-name="Package">
     <LayoutInfo>
@@ -2970,6 +2942,10 @@ WHERE
           Size="220,42"
           Id="Package\DFT_Cargar_Dim_Vendedor"
           TopLeft="384.5,260.5" />
+        <NodeLayout
+          Size="272,42"
+          Id="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar"
+          TopLeft="380.5,442.5" />
         <NodeLayout
           Size="202,42"
           Id="Package\DFT_Cargar_Fact_Venta"
@@ -3142,24 +3118,20 @@ WHERE
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="272,42"
-          Id="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar"
-          TopLeft="375.5,441.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="303.5,465">
+          TopLeft="303.5,465.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="72,0"
+              EndConnector="77,0"
               Start="0,0"
-              End="64.5,0">
+              End="69.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="64.5,0" />
+                    End="69.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3168,6 +3140,13 @@ WHERE
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <AnnotationLayout
+          Text="zº"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="40,60"
+          Id="44472c0e-56c5-4bfa-b11e-5b470a41f8ea"
+          TopLeft="619,387" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -3175,7 +3154,7 @@ WHERE
     design-time-name="Package\DFT_Cargar_Dim_Almacen">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="166,42"
           Id="Package\DFT_Cargar_Dim_Almacen\ADO NET Source"
@@ -3203,9 +3182,7 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3233,13 +3210,13 @@ WHERE
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="186,42"
-          Id="Package\DFT_Cargar_Dim_Cliente\ADO NET Destination"
-          TopLeft="540.5,156.5" />
-        <NodeLayout
           Size="166,42"
           Id="Package\DFT_Cargar_Dim_Cliente\ADO NET Source"
           TopLeft="287.5,156.5" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\DFT_Cargar_Dim_Cliente\ADO NET Destination"
+          TopLeft="540.5,156.5" />
         <EdgeLayout
           Id="Package\DFT_Cargar_Dim_Cliente.Paths[ADO NET Source Output]"
           TopLeft="453.5,177.5">
@@ -3339,7 +3316,7 @@ WHERE
     design-time-name="Package\DFT_Cargar_Dim_Producto">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="166,42"
           Id="Package\DFT_Cargar_Dim_Producto\ADO NET Source"
@@ -3367,9 +3344,7 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3395,7 +3370,7 @@ WHERE
     design-time-name="Package\DFT_Cargar_Dim_Unidad_Negocio">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="166,42"
           Id="Package\DFT_Cargar_Dim_Unidad_Negocio\ADO NET Source"
@@ -3423,9 +3398,7 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3451,7 +3424,7 @@ WHERE
     design-time-name="Package\DFT_Cargar_Dim_Vendedor">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="186,42"
           Id="Package\DFT_Cargar_Dim_Vendedor\ADO NET Destination"
@@ -3479,9 +3452,7 @@ WHERE
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3504,74 +3475,18 @@ WHERE
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\DFT_Cargar_Fact_Venta">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="186,42"
-          Id="Package\DFT_Cargar_Fact_Venta\ADO NET Destination"
-          TopLeft="436.5,76.5" />
-        <NodeLayout
-          Size="166,42"
-          Id="Package\DFT_Cargar_Fact_Venta\ADO NET Source"
-          TopLeft="216.5,77.5" />
-        <EdgeLayout
-          Id="Package\DFT_Cargar_Fact_Venta.Paths[ADO NET Source Output]"
-          TopLeft="382.5,98">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="54,0"
-              Start="0,0"
-              End="46.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="46.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Cargar_Fact_Venta\ADO NET Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT_Cargar_Fact_Venta\ADO NET Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
     design-time-name="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="166,42"
-          Id="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source"
-          TopLeft="196.5,185.5" />
-        <NodeLayout
           Size="186,42"
           Id="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination"
           TopLeft="467.5,176.5" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source"
+          TopLeft="196.5,185.5" />
         <EdgeLayout
           Id="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar.Paths[ADO NET Source Output]"
           TopLeft="362.5,206.5">
@@ -3610,7 +3525,7 @@ WHERE
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source">
+    design-time-name="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3618,7 +3533,61 @@ WHERE
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Destination">
+    design-time-name="Package\DFT_Cargar_Fact_Cuenta_Por_Cobrar\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT_Cargar_Fact_Venta">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="186,42"
+          Id="Package\DFT_Cargar_Fact_Venta\ADO NET Destination"
+          TopLeft="436.5,76.5" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\DFT_Cargar_Fact_Venta\ADO NET Source"
+          TopLeft="216.5,77.5" />
+        <EdgeLayout
+          Id="Package\DFT_Cargar_Fact_Venta.Paths[ADO NET Source Output]"
+          TopLeft="382.5,98">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="54,0"
+              Start="0,0"
+              End="46.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="46.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Cargar_Fact_Venta\ADO NET Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT_Cargar_Fact_Venta\ADO NET Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

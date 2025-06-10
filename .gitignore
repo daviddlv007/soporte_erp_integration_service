@@ -1,0 +1,61 @@
+# Build results
+bin/
+obj/
+[Bb]uild/
+[Bb]uilds/
+*.dll
+*.exe
+*.app
+*.pdb
+*.cache
+*.mdb
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio
+.vs/
+.vscode/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Rider
+.idea/
+
+# Logs
+*.log
+
+# Database
+*.mdf
+*.ldf
+
+# Backup & temporary files
+*.bak
+*.tmp
+*.swp
+*.scc
+
+# Others
+*.db
+*.DS_Store
+Thumbs.db
+
+# Node.js (si usas npm para UI)
+node_modules/
+
+# Python (si usas scripts para algo)
+_pycache_/
+*.py[cod]
+
+# Mac/Linux extra
+ehthumbs.db
+*.tar.gz
+*.zip
+*.7z
+*.gz
+*.tgz
+*.rar

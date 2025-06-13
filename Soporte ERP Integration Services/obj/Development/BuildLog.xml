@@ -2,23 +2,23 @@
 <BuildLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ProjectInfo>
     <Name>Soporte ERP Integration Services</Name>
-    <LastWriteTime>2025-06-10T18:52:20.744103Z</LastWriteTime>
+    <LastWriteTime>2025-06-10T03:14:02.738115Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>VagPackage.dtsx</Name>
-      <LastWriteTime>2025-06-10T19:33:26.9443675Z</LastWriteTime>
+      <LastWriteTime>2025-06-10T22:33:26.4526423Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>DavPackage.dtsx</Name>
-      <LastWriteTime>2025-06-10T18:52:20.7401002Z</LastWriteTime>
+      <LastWriteTime>2025-06-11T20:04:05.0276283Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>MainPackage.dtsx</Name>
-      <LastWriteTime>2025-06-10T19:23:54.7137696Z</LastWriteTime>
+      <LastWriteTime>2025-06-13T20:02:10.4828749Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
